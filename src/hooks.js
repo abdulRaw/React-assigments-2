@@ -30,34 +30,40 @@ export const useShuffle = (props = { pColors: colors }) => {
 
   return {
     reorderedColors,
-    onShuffle: handleShuffle
+    onShuffle: handleShuffle,
   };
 };
 
 export const useAutoSuffle = ({ pColors = colors, intervlTime = 1000 }) => {
+  const [isSlodeShow, setIsSlideShow] = useState(null);
   const interValRef = useRef(null);
 
   const { reorderedColors, onShuffle } = useShuffle({ pColors });
-  useEffect(() => {
-    clearInterval(interValRef.current);
-    interValRef.current = null;
-  }, [pColors]);
+
   const onControl = () => {
-    if (!!interValRef.current) {
+    if (!!isSlodeShow) {
       clearInterval(interValRef.current);
       interValRef.current = null;
+      setIsSlideShow(false);
       return;
     }
+    setIsSlideShow(true);
     onShuffle();
     interValRef.current = setInterval(onShuffle, intervlTime);
     return;
   };
 
-  const isIntervalActive = !!interValRef.current;
+  useEffect(() => {
+    if (!!isSlodeShow) {
+      onControl();
+    }
+  }, [pColors]);
+
+  const isIntervalActive = !!isSlodeShow;
 
   return {
     isIntervalActive,
     onControl,
-    reorderedColors
+    reorderedColors,
   };
 };
