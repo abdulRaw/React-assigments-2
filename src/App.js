@@ -16,7 +16,7 @@ export const AutoShuffleShow = ({ pColors }) => {
   return (
     <div>
       <div>
-        <h3 className="hd">State Mangement / Array Play</h3>
+        <h3 className="hd">Auto Suffle / Reset on Parent update</h3>
         <div className="shuffle-c">
           {reorderedColors.map((c, idx) => {
             return (
@@ -64,7 +64,7 @@ export const Shuffle = () => {
   const { reorderedColors, onShuffle } = useShuffle();
   return (
     <>
-      <div>
+      <div className="c-p">
         <h3 className="hd">State Mangement / Array Play</h3>
         <div className="shuffle-c">
           {reorderedColors.map((c, idx) => {
