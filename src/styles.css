@@ -1,0 +1,25 @@
+.shuffle-c {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  height: 25px;
+  width: 75px;
+  margin: 0px 25px;
+}
+.hd {
+  text-align: center;
+}
+
+.bx {
+  border-radius: 5px;
+  height: 150px;
+  width: 150px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.c {
+  display: grid;
+}
