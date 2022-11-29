@@ -23,3 +23,7 @@ button {
 .c {
   display: grid;
 }
+.c-p{
+  border: 5px solid blue;
+  padding: 29px;
+}

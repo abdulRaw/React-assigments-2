@@ -10,13 +10,13 @@ const getRandonIndex = () => {
 
 export const AutoShuffleShow = ({ pColors }) => {
   const { isIntervalActive, onControl, reorderedColors } = useAutoSuffle({
-    pColors
+    pColors,
   });
 
   return (
     <div>
       <div>
-        <h3 className="hd">State Mangement / Array Play</h3>
+        <h3 className="hd">Auto Suffle / Reset on Parent update</h3>
         <div className="shuffle-c">
           {reorderedColors.map((c, idx) => {
             return (
@@ -24,19 +24,19 @@ export const AutoShuffleShow = ({ pColors }) => {
                 className="bx"
                 key={c}
                 style={{
-                  background: c
+                  background: c,
                 }}
               ></div>
             );
           })}
 
-          {[{ name: "Play/Pause", onClick: onControl }].map(
-            ({ name, onClick }) => (
-              <button key={name} onClick={onClick}>
-                {name}
-              </button>
-            )
-          )}
+          {[
+            { name: isIntervalActive ? "Pause" : "Play", onClick: onControl },
+          ].map(({ name, onClick }) => (
+            <button key={name} onClick={onClick}>
+              {name}
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@ export const Shuffle = () => {
   const { reorderedColors, onShuffle } = useShuffle();
   return (
     <>
-      <div>
+      <div className="c-p">
         <h3 className="hd">State Mangement / Array Play</h3>
         <div className="shuffle-c">
           {reorderedColors.map((c, idx) => {
@@ -73,7 +73,7 @@ export const Shuffle = () => {
                 className="bx"
                 key={c}
                 style={{
-                  background: c
+                  background: c,
                 }}
               ></div>
             );
@@ -88,9 +88,9 @@ export const Shuffle = () => {
           )}
         </div>
       </div>
+      <AutoShuffleShow pColors={reorderedColors} />
       <Reverse pColors={reorderedColors} />
       <Swap pColors={reorderedColors} />
-      <AutoShuffleShow pColors={reorderedColors} />
     </>
   );
 };
@@ -112,7 +112,7 @@ export const Reverse = ({ pColors }) => {
             className="bx"
             key={c}
             style={{
-              background: c
+              background: c,
             }}
           ></div>
         ))}
